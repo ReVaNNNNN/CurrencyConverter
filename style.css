@@ -1,0 +1,29 @@
+h3 {
+    margin-bottom: 15% !important;
+    font-family: cursive;
+    border-bottom: 2px solid orangered;
+}
+
+body {
+    background-color: darksalmon !important;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    font-size: 1.3em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+}
+
+#root {
+    background-color: rgb(206, 226, 224) !important;
+    padding: 40px 40px 70px 40px;
+    margin-top: 10%;
+    border: 3px solid peachpuff;
+}
+
+select {
+    margin: 10px 5px;
+}
+
+em {
+    margin-left: 1%
+}
