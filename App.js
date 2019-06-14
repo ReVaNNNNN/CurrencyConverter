@@ -9,9 +9,28 @@ const Cash = (props) => {
 class ExchangeCounter extends React.Component {
   state = {
     amount: "",
-    ratioDollar: 3.6,
-    ratioEuro: 4.2
   }
+
+  currencies = [
+    {
+      id: 1,
+      name: 'dollar',
+      ratio: 3.6,
+      title: 'Wartość w dolarach:'
+    },
+    {
+      id: 2,
+      name: 'euro',
+      ratio: 4.2,
+      title: 'Wartość w euro:'
+    },
+    {
+      id: 3,
+      name: 'pound',
+      ratio: 4.95,
+      title: 'Wartość w funtach:'
+    },
+  ];
 
   handleChange = e => {
     this.setState({
@@ -20,7 +39,16 @@ class ExchangeCounter extends React.Component {
   }
 
   render() {
-    const {amount, ratioDollar, ratioEuro} = this.state;
+    const {amount} = this.state;
+
+    const converters = this.currencies.map(currency => (
+        <Cash 
+        key={currency.id} 
+        title={currency.title} 
+        ratio={currency.ratio}
+        cash={amount} 
+        />
+      ));
 
     return (
       <div classname="app">
@@ -30,8 +58,7 @@ class ExchangeCounter extends React.Component {
           value={amount} 
           onChange={this.handleChange}/>  
         </label>
-        <Cash cash={amount}  ratio={ratioDollar} title="Warość w dolarach:"/>
-        <Cash cash={amount}  ratio={ratioEuro} title="Warość w euro:"/>
+        {converters}
       </div>
     );
   }
