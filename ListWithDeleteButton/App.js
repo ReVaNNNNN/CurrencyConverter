@@ -2,7 +2,7 @@ const Person = (props) =>  {
   return (
     <li>
       <span>{props.name}</span>
-      <button>Usuń</button>
+      <button onClick={props.delete}>Usuń</button>
     </li>
   )
 }
@@ -30,8 +30,13 @@ class PeopleList extends React.Component {
     ]
   }
 
-  handleDelete = () => {
-    console.log('Usuwanie');
+  handleDelete (id) {
+    const people = [...this.state.people];
+    const index = people.findIndex(person => person.id === id);
+    people.splice(index, 1);
+    this.setState({
+      people
+    })
   }
 
   render() {
@@ -39,7 +44,7 @@ class PeopleList extends React.Component {
       <>
         <ul>
           {this.state.people.map(person => 
-            <Person key={person.id} name={person.name} delete={this.handleDelete}/>)
+            <Person key={person.id} name={person.name} delete={this.handleDelete.bind(this, person.id)}/>)
           }
         </ul>
       </>
