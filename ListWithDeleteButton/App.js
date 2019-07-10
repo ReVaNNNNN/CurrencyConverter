@@ -44,7 +44,11 @@ class PeopleList extends React.Component {
       <>
         <ul>
           {this.state.people.map(person => 
-            <Person key={person.id} name={person.name} delete={this.handleDelete.bind(this, person.id)}/>)
+            <Person   
+              key={person.id} 
+              name={person.name} 
+              delete={this.handleDelete.bind(this, person.id)}
+              />)
           }
         </ul>
       </>
