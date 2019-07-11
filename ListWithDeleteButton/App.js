@@ -11,22 +11,10 @@ class PeopleList extends React.Component {
 
   state = {
     people: [
-      {
-        id: 1,
-        name: 'Asia'
-      },
-      {
-        id: 2,
-        name: 'Ania'
-      },
-      {
-        id: 3,
-        name: 'Basia'
-      },
-      {
-        id: 4,
-        name: 'Jolka'
-      }
+      {id: 1, name: 'Asia'},
+      {id: 2, name: 'Ania'},
+      {id: 3,name: 'Basia'},
+      {id: 4,name: 'Jolka'}
     ]
   }
 
@@ -43,12 +31,14 @@ class PeopleList extends React.Component {
     return(
       <>
         <ul>
-          {this.state.people.map(person => 
-            <Person   
-              key={person.id} 
-              name={person.name} 
-              delete={this.handleDelete.bind(this, person.id)}
-              />)
+          {this.state.people.map(
+            person => 
+              <Person   
+                key={person.id} 
+                name={person.name} 
+                delete={this.handleDelete.bind(this, person.id)}
+              />
+            )
           }
         </ul>
       </>
