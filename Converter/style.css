@@ -1,7 +1,7 @@
 h3 {
     margin-bottom: 15% !important;
     font-family: cursive;
-    border-bottom: 2px solid orangered;
+    border-bottom: 1px solid orangered;
 }
 
 body {
@@ -10,7 +10,7 @@ body {
     justify-content: center;
     margin: 10px;
     font-size: 1.3em;
-    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+    font-family: Verdana, sans-serif !important;
 }
 
 #root {
