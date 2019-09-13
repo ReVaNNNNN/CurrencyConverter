@@ -17,21 +17,21 @@ class ExchangeCounter extends React.Component {
       {
         id: 1,
         name: 'dollar',
-        ratio: 3.6,
+        ratio: 3.9,
         title: 'Wartość w dolarach:',
         symbol: <span>&#36;</span>
       },
       {
         id: 2,
         name: 'euro',
-        ratio: 4.2,
+        ratio: 4.35,
         title: 'Wartość w euro:',
         symbol: <span>&#8364;</span>
       },
       {
         id: 3,
         name: 'pound',
-        ratio: 4.95,
+        ratio: 4.85,
         title: 'Wartość w funtach:',
         symbol: <span>&#163;</span>
       },
