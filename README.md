@@ -1,2 +1,2 @@
 # ReactExercises
-This is a place where I practise my React understanding.
+This is a place where I practise React.JS.
