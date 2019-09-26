@@ -11,10 +11,10 @@ class PeopleList extends React.Component {
 
   state = {
     people: [
-      {id: 1, name: 'Asia'},
-      {id: 2, name: 'Ania'},
-      {id: 3,name: 'Basia'},
-      {id: 4,name: 'Jolka'}
+      {id: 1, name: 'Łukasz'},
+      {id: 2, name: 'Andrzej'},
+      {id: 3,name: 'Janusz'},
+      {id: 4,name: 'Zbigniew'}
     ]
   }
 
