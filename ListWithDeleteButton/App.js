@@ -8,7 +8,6 @@ const Person = (props) =>  {
 }
 
 class PeopleList extends React.Component {
-
   state = {
     people: [
       {id: 1, name: 'Łukasz'},
