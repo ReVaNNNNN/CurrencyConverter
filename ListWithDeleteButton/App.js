@@ -20,6 +20,7 @@ class PeopleList extends React.Component {
   handleDelete (id) {
     const people = [...this.state.people];
     const index = people.findIndex(person => person.id === id);
+    
     people.splice(index, 1);
     this.setState({
       people
@@ -32,9 +33,7 @@ class PeopleList extends React.Component {
         <ul>
           {this.state.people.map(
             person => 
-              <Person   
-                key={person.id} 
-                name={person.name} 
+              <Person key={person.id} name={person.name} 
                 delete={this.handleDelete.bind(this, person.id)}
               />
             )
