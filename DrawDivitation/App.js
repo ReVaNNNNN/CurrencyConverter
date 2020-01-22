@@ -1,5 +1,4 @@
 class DrawDivitation extends React.Component {
-
   state = {
     drawed: '',
     inputValue: '',
@@ -37,12 +36,12 @@ class DrawDivitation extends React.Component {
     return (
     <>
       <button onClick={this.handleDraw}>Losuj</button>
-      <br/>
+        <br/>
       <input value={this.state.inputValue} onChange={this.updateInputValue}/> 
-      <br/>
+        <br/>
       <button onClick={this.addNewDevotion}>Dodaj wróżbę</button>
-      <br/>
-      <br/>
+        <br/>
+        <br/>
       <p>{this.state.drawed}</p>
     </>
     )
