@@ -1,26 +1,29 @@
-class ShoppingList extends React.Component {
+class App extends React.Component {
   state = {
-    items1: "Masło",
-    items2: "Majonez",
-    items3: "Orzechy",
+    text: "",
+  };
+
+  handleClick = () => {
+    this.setState({
+      text: this.state.text + "A",
+    });
+  };
+
+  handleClear = () => {
+    this.setState({
+      text: "",
+    });
   };
 
   render() {
     return (
       <>
-        <h1>Lista zakupów</h1>
-        <ul>
-          <ItemList name={this.state.items1} />
-          <ItemList name={this.state.items2} />
-          <ItemList name={this.state.items3} />
-        </ul>
+        <button onClick={this.handleClick}>Dodaj "A"</button>
+        <h1>{this.state.text}</h1>
+        <button onClick={this.handleClear}>Wyczyść"</button>
       </>
     );
   }
 }
 
-const ItemList = (props) => {
-  return <li>{props.name}</li>;
-};
-
-ReactDOM.render(<ShoppingList />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
