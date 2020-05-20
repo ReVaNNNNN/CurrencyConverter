@@ -1,12 +1,26 @@
 class App extends React.Component {
-  state = {};
+  state = {
+    text: "",
+  };
+
+  handleInputChange(event) {
+    this.setState({
+      text: event.target.value,
+    });
+  }
+
+  handleReset = () => {
+    this.setState({
+      text: "",
+    });
+  };
 
   render() {
     return (
       <>
-        <input></input>
-        <button>Reset</button>
-        <h1></h1>
+        <input onChange={this.handleInputChange.bind(this)}></input>
+        <button onClick={this.handleReset}>Reset</button>
+        <h1 className="title">{this.state.text}</h1>
       </>
     );
   }
