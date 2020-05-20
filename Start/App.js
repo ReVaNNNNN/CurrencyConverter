@@ -1,26 +1,12 @@
 class App extends React.Component {
-  state = {
-    text: "",
-  };
-
-  handleClick = () => {
-    this.setState({
-      text: this.state.text + "A",
-    });
-  };
-
-  handleClear = () => {
-    this.setState({
-      text: "",
-    });
-  };
+  state = {};
 
   render() {
     return (
       <>
-        <button onClick={this.handleClick}>Dodaj "A"</button>
-        <h1>{this.state.text}</h1>
-        <button onClick={this.handleClear}>Wyczyść"</button>
+        <input></input>
+        <button>Reset</button>
+        <h1></h1>
       </>
     );
   }
