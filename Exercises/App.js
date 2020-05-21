@@ -1,19 +1,22 @@
 class Message extends React.Component {
   state = {
-    btnText: "Ukryj",
+    isActive: true,
   };
 
   handelTextChange = () => {
     this.setState({
-      btnText: "Pokaż",
-      className: "hidden",
+      isActive: !this.state.isActive,
     });
   };
   render() {
     return (
       <>
-        <button onClick={this.handelTextChange}>{this.state.btnText}</button>
-        <h1 className={this.state.className}>Tutaj jest jakiś tekst.</h1>
+        <button onClick={this.handelTextChange}>
+          {this.state.isActive ? "Ukryj" : "Pokaż"}
+        </button>
+        <h1 className={this.state.isActive ? "" : "hidden"}>
+          Tutaj jest jakiś tekst.
+        </h1>
       </>
     );
   }
