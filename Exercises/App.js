@@ -1,25 +1,42 @@
-class Message extends React.Component {
+class Counter extends React.Component {
   state = {
-    isActive: true,
+    result: 0,
+    clickCounter: 0,
   };
 
-  handelTextChange = () => {
-    this.setState({
-      isActive: !this.state.isActive,
-    });
-  };
+  handleChangeResult(operation) {
+    if (operation == "add") {
+      this.setState((prevState) => ({
+        result: prevState.result + 1,
+      }));
+    } else if (operation == "sub") {
+      this.setState((prevState) => ({
+        result: prevState.result - 1,
+      }));
+    } else {
+      this.setState({
+        result: 0,
+      });
+    }
+
+    this.setState((prevState) => ({
+      clickCounter: prevState.clickCounter + 1,
+    }));
+  }
+
   render() {
     return (
       <>
-        <button onClick={this.handelTextChange}>
-          {this.state.isActive ? "Ukryj" : "Pokaż"}
+        <button onClick={this.handleChangeResult.bind(this, "add")}>+1</button>
+        <button onClick={this.handleChangeResult.bind(this, "sub")}>-1</button>
+        <button onClick={this.handleChangeResult.bind(this, "reset")}>
+          Reset
         </button>
-        <h1 className={this.state.isActive ? "" : "hidden"}>
-          Tutaj jest jakiś tekst.
-        </h1>
+        <h2>Liczba kliknięć: {this.state.clickCounter}</h2>
+        <h2>Wynik: {this.state.result}</h2>
       </>
     );
   }
 }
 
-ReactDOM.render(<Message />, document.getElementById("root"));
+ReactDOM.render(<Counter />, document.getElementById("root"));
