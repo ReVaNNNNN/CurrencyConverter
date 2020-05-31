@@ -1,53 +1,44 @@
-const PositiveMessage = () => <p> Możesz obejrzeć film. Zapraszamy !</p>;
-
-const NegativeMessage = () => (
-  <p> Nie możesz obejrzeć tego filmu jeśli masz mniej niż 16 lat!</p>
-);
-
-class TicketShop extends React.Component {
+class App extends React.Component {
   state = {
-    isConfirmed: false,
-    isFormSubmitted: false,
+    availableProducts: 7,
+    shoppingCart: 0,
   };
 
-  handleCheckboxChange = () => {
-    this.setState((prevState) => ({
-      isConfirmed: !prevState.isConfirmed,
-    }));
-  };
-
-  handleFormSubmit = (e) => {
-    e.preventDefault();
+  handleRemoveFromCart = () => {
     this.setState({
-      isFormSubmitted: true,
+      shoppingCart: this.state.shoppingCart - 1,
+    });
+  };
+
+  handleAddFromCart = () => {
+    this.setState({
+      shoppingCart: this.state.shoppingCart + 1,
     });
   };
 
   render() {
     return (
       <>
-        <h1>Kup blet na horror roku!</h1>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>
-            <input
-              type="checkbox"
-              onChange={this.handleCheckboxChange}
-              checked={this.state.isConfirmed}
-            />{" "}
-            Mam co najmniej 16 lat
-          </label>
-          <button type="submit">Kup bilet</button>
-        </form>
-        {this.state.isConfirmed ? (
-          this.state.isConfirmed ? (
-            <PositiveMessage />
-          ) : (
-            <NegativeMessage />
-          )
-        ) : null}
+        <button
+          disabled={this.state.shoppingCart ? false : true}
+          onClick={this.handleRemoveFromCart}
+        >
+          -
+        </button>
+        <span> {this.state.shoppingCart} </span>
+        <button
+          disabled={
+            this.state.shoppingCart >= this.state.availableProducts
+              ? true
+              : false
+          }
+          onClick={this.handleAddFromCart}
+        >
+          +
+        </button>
       </>
     );
   }
 }
 
-ReactDOM.render(<TicketShop />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
