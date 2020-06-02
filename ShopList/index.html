@@ -4,8 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Exercise</title>
-    <style></style>
+    <title>ShopList</title>
+    <style>
+      html {
+        font-size: 20px;
+        font-family: sans-serif;
+      }
+
+      li {
+        line-height: 160%;
+        padding: 20px 10px;
+        cursor: pointer;
+      }
+
+      li:nth-child(even) {
+        background-color: #eee;
+      }
+
+      li:nth-child(odd) {
+        background-color: #ccc;
+      }
+    </style>
   </head>
 
   <body>
@@ -24,5 +43,9 @@
     </div>
 
     <script type="text/babel" src="App.js"></script>
+    <script type="text/babel" src="Header.js"></script>
+    <script type="text/babel" src="Item.js"></script>
+    <script type="text/babel" src="ListItems.js"></script>
+    <script type="text/babel" src="index.js"></script>
   </body>
 </html>
