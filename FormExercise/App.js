@@ -3,24 +3,19 @@ class Form extends React.Component {
     city: "Kraków",
     description: "",
     isLiked: true,
+    number: 2,
   };
 
-  handleCityChange = (event) => {
-    this.setState({
-      city: event.target.value,
-    });
-  };
-
-  handleDescriptionChange = (event) => {
-    this.setState({
-      description: event.target.value,
-    });
-  };
-
-  handleIsLiked = () => {
-    this.setState({
-      isLiked: !this.state.isLiked,
-    });
+  handleChange = (e) => {
+    if (e.target.type === "checkbox") {
+      this.setState({
+        [e.target.name]: e.target.checked,
+      });
+    } else {
+      this.setState({
+        [e.target.name]: e.target.value,
+      });
+    }
   };
 
   render() {
@@ -29,8 +24,9 @@ class Form extends React.Component {
         <label>
           Podaj miasto
           <input
+            name="city"
             value={this.state.city}
-            onChange={this.handleCityChange}
+            onChange={this.handleChange}
             type="text"
           />
         </label>
@@ -38,28 +34,34 @@ class Form extends React.Component {
         <label>
           Napisz coś o tym mieście
           <textarea
+            name="description"
             value={this.state.description}
-            onChange={this.handleDescriptionChange}
+            onChange={this.handleChange}
           ></textarea>
         </label>
         <br />
         <label>
           Czy lubisz to miasto ?
           <input
+            name="isLiked"
             type="checkbox"
             checked={this.state.isLiked}
-            onChange={this.handleIsLiked}
+            onChange={this.handleChange}
           />
         </label>
         <br />
         <label>
           Ile razy byłeś w tym mieście ?
-          <select>
-            <option value="0">1</option>
-            <option value="1">2</option>
-            <option value="2">3</option>
-            <option value="3">4</option>
-            <option value="more">Więcek</option>
+          <select
+            name="number"
+            value={this.state.number}
+            onChange={this.handleChange}
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">2</option>
+            <option value="4">3</option>
+            <option value="more">Więcej</option>
           </select>
         </label>
       </div>
