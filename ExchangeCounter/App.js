@@ -10,6 +10,7 @@ const Cash = (props) => {
 class ExchangeCounter extends React.Component {
   state = {
     amount: "",
+    product: "electricity",
   };
 
   currencies = [
@@ -39,15 +40,38 @@ class ExchangeCounter extends React.Component {
     });
   };
 
+  handleSelect = (e) => {
+    this.setState({
+      product: e.target.value,
+    });
+  };
+
+  insertSuffix = (selected) => {
+    if (selected === "electricity") return <em>kWh</em>;
+    else if (selected === "fuel") return <em>litrów</em>;
+    else if (selected === "orange") return <em>kilogramów</em>;
+    else return null;
+  };
+
   render() {
-    const { amount } = this.state;
+    const { amount, product } = this.state;
     const calculators = this.currencies.map((item) => (
       <Cash key={item.id} title={item.title} cash={amount} ratio={item.ratio} />
     ));
     return (
       <div className="app">
         <label>
+          Wybierz produkt:
+          <select value={product} onChange={this.handleSelect}>
+            <option value="electricity">prąd</option>
+            <option value="fuel">paliwo</option>
+            <option value="orange">pomarańcze</option>
+          </select>
+        </label>
+        <br />
+        <label>
           <input type="number" value={amount} onChange={this.handleChange} />
+          {this.insertSuffix(product)}
         </label>
         {calculators}
       </div>
