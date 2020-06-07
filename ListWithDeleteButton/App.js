@@ -1,47 +1,45 @@
-const Person = (props) =>  {
+const Person = (props) => {
   return (
     <li>
-      <span>{props.name}</span>
-      <button onClick={props.delete}>Usuń</button>
+      {props.name}
+      <br />
+      <button>Usuń</button>
+      <br />
+      <br />
     </li>
-  )
-}
+  );
+};
 
-class PeopleList extends React.Component {
+class List extends React.Component {
   state = {
     people: [
-      {id: 1, name: 'Łukasz'},
-      {id: 2, name: 'Andrzej'},
-      {id: 3,name: 'Janusz'},
-      {id: 4,name: 'Zbigniew'}
-    ]
-  }
+      {
+        id: 1,
+        name: "Kamil",
+      },
+      {
+        id: 2,
+        name: "Piotr",
+      },
+      {
+        id: 3,
+        name: "Adam",
+      },
+      {
+        id: 4,
+        name: "Grzegorz",
+      },
+    ],
+  };
 
-  handleDelete (id) {
-    const people = [...this.state.people];
-    const index = people.findIndex(person => person.id === id);
-    
-    people.splice(index, 1);
-    this.setState({
-      people
-    })
-  }
+  handleDeletePerson = () => {};
 
   render() {
-    return(
-      <>
-        <ul>
-          {this.state.people.map(
-            person => 
-              <Person key={person.id} name={person.name} 
-                delete={this.handleDelete.bind(this, person.id)}
-              />
-            )
-          }
-        </ul>
-      </>
-    )
+    const people = this.state.people.map((person) => (
+      <Person name={person.name} />
+    ));
+    return <ul>{people}</ul>;
   }
 }
 
-ReactDOM.render(<PeopleList />, document.getElementById('root'))
+ReactDOM.render(<List />, document.getElementById("root"));
