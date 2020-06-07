@@ -3,7 +3,7 @@ const Person = (props) => {
     <li>
       {props.name}
       <br />
-      <button>Usuń</button>
+      <button onClick={props.delete}>Usuń</button>
       <br />
       <br />
     </li>
@@ -32,11 +32,20 @@ class List extends React.Component {
     ],
   };
 
-  handleDeletePerson = () => {};
+  handleDeletePerson = (id) => {
+    const people = this.state.people.filter((person) => person.id != id);
+
+    this.setState({
+      people,
+    });
+  };
 
   render() {
     const people = this.state.people.map((person) => (
-      <Person name={person.name} />
+      <Person
+        name={person.name}
+        delete={() => this.handleDeletePerson(person.id)}
+      />
     ));
     return <ul>{people}</ul>;
   }
