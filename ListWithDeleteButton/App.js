@@ -43,6 +43,7 @@ class List extends React.Component {
   render() {
     const people = this.state.people.map((person) => (
       <Person
+        key={person.id}
         name={person.name}
         delete={() => this.handleDeletePerson(person.id)}
       />
