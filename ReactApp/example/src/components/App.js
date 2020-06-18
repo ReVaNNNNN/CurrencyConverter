@@ -1,32 +1,39 @@
 import React, { Component } from "react";
+import ButtonFetchUsers from "./ButtonFetchUsers";
+import UsersList from "./UsersList";
 
 class App extends Component {
   state = {
     users: [],
   };
 
-  componentDidMount() {
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://jsonplaceholder.typicode.com/users", true);
-    xhr.onload = () => {
-      if (xhr.status === 200) {
-        const users = JSON.parse(xhr.response);
+  url = "https://randomuser.me/api/?results=5";
+
+  handleClickFetchusers = () => {
+    console.log("click click");
+  };
+
+  getUsers = () => {
+    fetch(this.url)
+      .then((response) => response.json())
+      .then((data) =>
         this.setState({
-          users,
-        });
-      }
-    };
-    xhr.send();
+          users: data.results,
+        })
+      );
+  };
+
+  componentDidMount() {
+    this.getUsers();
   }
 
   render() {
-    const users = this.state.users.map((user) => (
-      <div key={user.id}>
-        <h4>{user.name}</h4>
-        <p>{user.address.city}</p>
-      </div>
-    ));
-    return <>{users}</>;
+    return (
+      <>
+        <ButtonFetchUsers click={this.handleClickFetchusers} />
+        <UsersList users={this.state.users} />
+      </>
+    );
   }
 }
 
