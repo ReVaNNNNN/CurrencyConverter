@@ -26,7 +26,7 @@ class App extends Component {
         id: 2,
         text: "Przebiec maraton",
         date: "2020-11-10",
-        important: true,
+        important: false,
         active: true,
         finishDate: null,
       },
@@ -35,10 +35,26 @@ class App extends Component {
 
   deleteTask = (id) => {
     const tasks = [...this.state.tasks];
+    const index = tasks.findIndex((task) => task.id === id);
+    tasks.splice(index, 1);
+
+    this.setState({
+      tasks,
+    });
   };
 
   changeTaskStatus = (id) => {
-    console.log("change status");
+    const tasks = [...this.state.tasks];
+    tasks.forEach((task) => {
+      if (task.id === id) {
+        task.active = false;
+        task.finishDate = new Date().getTime();
+      }
+    });
+
+    this.setState({
+      tasks,
+    });
   };
 
   render() {
