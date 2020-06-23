@@ -33,6 +33,8 @@ class App extends Component {
     ],
   };
 
+  counter = this.state.tasks.length;
+
   deleteTask = (id) => {
     const tasks = [...this.state.tasks];
     const index = tasks.findIndex((task) => task.id === id);
@@ -57,10 +59,22 @@ class App extends Component {
     });
   };
 
+  addTask = (task) => {
+    let tasks = [...this.state.tasks];
+    tasks.push(task);
+
+    this.setState({
+      tasks,
+    });
+    this.counter++;
+
+    return true;
+  };
+
   render() {
     return (
       <div className="App">
-        <AddTask />
+        <AddTask addTask={this.addTask} counter={this.counter} />
         <TaskList
           tasks={this.state.tasks}
           delete={this.deleteTask}
