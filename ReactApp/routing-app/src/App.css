@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  background-color: #000;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+}
+
+li {
+  flex-grow: 1;
+}
+
+a {
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 15px 25px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-bottom: 4px solid black;
+}
+
+a:hover {
+  color: rosybrown;
+}
+
+section {
+  padding-top: 30px;
+  text-align: center;
+}
+
+.active {
+  border-bottom: 4px solid rosybrown;
+}
+
+.home_selected {
+  border-bottom: 4px solid orange;
+}
+
+.news_selected {
+  border-bottom: 4px solid greenyellow;
+}
+
+.contact_selected {
+  border-bottom: 4px solid violet;
+}
