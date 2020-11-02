@@ -19,8 +19,8 @@ class App extends React.Component {
     return (
       <>
         <input onChange={this.handleInputChange.bind(this)}></input>
-        <button onClick={this.handleReset}>Reset</button>
-        <h1 className="title">{this.state.text}</h1>
+        <button onClick={this.handleReset}> Reset </button>
+        <h1 className="title"> {this.state.text} </h1>
       </>
     );
   }
